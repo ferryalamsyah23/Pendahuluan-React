@@ -1,0 +1,1 @@
+This project marks my first exploration of React as a JavaScript library. I built two versions: the first is a simple HTML file integrated with React, while the second adds more features for practice. The core functionality is a counter app with increment and decrement buttons, which helped me understand the fundamentals of React, including state management and event handling.
