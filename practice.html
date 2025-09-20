@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const container = document.getElementById("root");
+        const root = ReactDOM.createRoot(container);
+
+        function Button(props){
+            return (<button onClick={props.onClick} className={props.className} disabled={props.disabled}>
+            {props.name}</button>);
+        }
+
+        function Text(props){
+            return (<p className={props.className}>{props.number > 10 ? "done" : props.number
+                && props.number < 0 ? "done" : props.number
+            }</p>)
+        }
+
+        function HomePage() {
+            const [number, setnumber] = React.useState(0);
+
+            function handleClick(){
+                setnumber(number - 1);
+            }
+
+            function handleClickPlus(){
+                setnumber(number + 1)
+            }
+
+            function handleClickStatement(){
+                setnumber(number - number)
+            }
+
+            return (
+                <>
+                <div>
+                    <Button onClick={handleClickPlus} name="+" disabled={number > 10 || number < 0}/>
+                    <Button className="minus" onClick={handleClick} name="-" disabled={number > 10 || number < 0}/>
+                    <Text className="text" number={number}/>
+                </div>
+                <Button className="reset" disabled={number <= 10 && number >= 0} onClick={handleClickStatement} 
+                name="Reset!"/>
+                </>
+            )
+        }
+        root.render(<HomePage />);
+    </script>
+</body>
+</html>
